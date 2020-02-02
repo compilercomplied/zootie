@@ -1,0 +1,42 @@
+on:
+  release:
+    types: [created]
+
+name: Publish Release
+jobs:
+  generate:
+    name: Create release-artifacts
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Set up Python 3.7
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.7
+      - name: Pip install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements
+          pip install pyinstaller
+      - name: Get release version
+        id: release_version
+        run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
+      - name: generate artifacts
+        run: |
+          pyinstaller --onefile --name zootie-$RELEASE zootie.py
+        env:
+          RELEASE: $${{ steps.release_version.TAG}}
+      - name: Upload the artifacts
+        uses: svenstaro/upload-release-action@v1-release
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/zootie-* 
+          asset_name: mything
+          tag: $RELEASE
+          file_glob: true
+          overwrite: true
+        env:
+          RELEASE: $${{ steps.release_version.TAG}}
+
