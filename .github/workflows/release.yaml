@@ -29,9 +29,14 @@ jobs:
         env:
           RELEASE: $${{ steps.release_version.TAG}}
       - name: Upload the artifacts
-        uses: skx/github-action-publish-binaries@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: svenstaro/upload-release-action@v1-release
         with:
-          args: 'dist/zootie-*'
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: dist/zootie-* 
+          asset_name: mything
+          tag: $RELEASE
+          file_glob: true
+          overwrite: true
+        env:
+          RELEASE: $${{ steps.release_version.TAG}}
 
