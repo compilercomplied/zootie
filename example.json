@@ -1,0 +1,51 @@
+
+{
+  "token": "long token generated in your profile",
+  "userID": "ID under your pic in your profile",
+  "ctxt": [
+    {
+      "name": "monday to thursday",
+      "description": "some description",
+      "tasks": [
+         {
+           "name": "job name you can identify",
+           "jobID": "job ID",
+           "billingStatus": "non-billable/billable",
+           "hours": 2.5,
+           "fromTime": "08.00AM",
+           "toTime": "10.30AM"
+         },
+         {
+           "name": "job name you can identify",
+           "jobID": "job ID",
+           "billingStatus": "non-billable/billable",
+           "hours": 7,
+           "fromTime": "10.30AM",
+           "toTime": "17.30PM"
+         }
+      ]
+    },
+    {
+      "name": "friday",
+      "description":"6h",
+      "tasks": [
+         {
+           "name": "",
+           "jobID": "",
+           "billingStatus": "",
+           "hours": 1.5,
+           "fromTime": "08.00AM",
+           "toTime": "9.30AM"
+         },
+         {
+           "name": "",
+           "jobID": "",
+           "billingStatus": "",
+           "hours": 4.5,
+           "fromTime": "9.30AM",
+           "toTime": "14.00PM"
+         }
+      ]
+    }
+  ]
+}
