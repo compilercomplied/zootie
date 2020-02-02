@@ -27,7 +27,7 @@ jobs:
         run: |
           pyinstaller --onefile --name zootie-$RELEASE zootie.py
         env:
-          RELEASE: $${{ steps.release_version.TAG}}
+          RELEASE: ${{ steps.release_version.TAG}}
       - name: Upload the artifacts
         uses: svenstaro/upload-release-action@v1-release
         with:
@@ -38,5 +38,5 @@ jobs:
           file_glob: true
           overwrite: true
         env:
-          RELEASE: $${{ steps.release_version.TAG}}
+          RELEASE: ${{ steps.release_version.TAG}}
 
