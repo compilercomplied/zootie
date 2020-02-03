@@ -1,6 +1,7 @@
 on:
-  release:
-    types: [created]
+  push:
+    tags: 
+     - "v*"
 
 name: Publish Release
 jobs:
@@ -38,5 +39,5 @@ jobs:
           file_glob: true
           overwrite: true
         env:
-          RELEASE: ${{ steps.release_version.TAG}}
+          RELEASE: ${{ steps.release_version.TAG }}
 
