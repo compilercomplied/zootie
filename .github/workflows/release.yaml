@@ -1,7 +1,6 @@
 on:
-  push:
-    tags: 
-     - "v*"
+  release:
+        types: [created]
 
 name: Publish Release
 jobs:
@@ -24,7 +23,7 @@ jobs:
       - name: Get release version
         id: release_version
         run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
-      - name: generate artifacts
+      - name: Generate artifacts
         run: |
           pyinstaller --onefile --name zootie-$RELEASE zootie.py
         env:
