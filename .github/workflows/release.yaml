@@ -34,7 +34,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/zootie-* 
           asset_name: zootie
-          tag: ${{ steps.release_version.TAG }} 
+          tag: pending-dynamic-tag
           file_glob: true
           overwrite: true
         env:
