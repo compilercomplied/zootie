@@ -1,6 +1,6 @@
 on:
   release:
-        types: [created]
+    types: [created]
 
 name: Publish Release
 jobs:
@@ -33,8 +33,8 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/zootie-* 
-          asset_name: mything
-          tag: $RELEASE
+          asset_name: zootie
+          tag: ${{ steps.release_version.TAG }} 
           file_glob: true
           overwrite: true
         env:
