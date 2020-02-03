@@ -23,7 +23,7 @@ jobs:
       - name: Get release version
         id: release_version
         run: echo ::set-output name=TAG::${GITHUB_REF/refs\/tags\//}
-      - name: generate artifacts
+      - name: Generate artifacts
         run: |
           pyinstaller --onefile --name zootie-$RELEASE zootie.py
         env:
@@ -33,10 +33,10 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/zootie-* 
-          asset_name: mything
-          tag: $RELEASE
+          asset_name: zootie
+          tag: pending-dynamic-tag
           file_glob: true
           overwrite: true
         env:
-          RELEASE: ${{ steps.release_version.TAG}}
+          RELEASE: ${{ steps.release_version.TAG }}
 
