@@ -66,7 +66,8 @@ def cli(f, c, s):
 
 
   if c:
-    ctxt = filter( lambda _: _.name == c, zoot.get("ctxt") )
+    filtered = filter( lambda _: _.get("name") == c, zoot.get("ctxt") )
+    ctxt = list(filtered)[0]
   else:
     ctxt = zoot.get("ctxt")[0]
 
